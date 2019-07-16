@@ -12,6 +12,14 @@ class DoubanSpider(scrapy.Spider):
         "https://movie.douban.com/top250"
     ]
 
+    def start_requests(self):
+        for i in range(0,10):
+            next_page = "https://movie.douban.com/top250?start=" + str(25 * i)+ "&filter="
+            yield scrapy.Request(next_page, callback=self.parse)
+
+
+    
+
     def parse(self, response):
         for sel in response.xpath('//div[@class="info"]'):
             item = DoubanItem()
@@ -19,3 +27,4 @@ class DoubanSpider(scrapy.Spider):
             item['star'] = sel.xpath('div[@class="bd"]/div[@class="star"]/span[@class="rating_num"]/text()').extract()[0]
             print item['title'],item['star']
             yield item
+            

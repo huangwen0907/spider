@@ -25,18 +25,22 @@ import sys
 reload(sys) 
 sys.setdefaultencoding('utf8') 
 
+num = 0
+
 class DoubanPipeline(object):
     def __init__(self):
         self.file=open('douban_top250.txt',mode='wb')
 
 
     def process_item(self, item, spider):
-        line='the top250 movie list:'
-
+        global num
+        num = num +1
+        line='the top250 movie list ' + str(num) + ':'
+        
         for i in range(1,len(item['star'])-1):
             title=item['title']
             star=item['star']
-            line=line+'  '+title+'  '
+            line=line +'  '+title+'  '
             line=line+star+'\n'
 
         self.file.write(line)
