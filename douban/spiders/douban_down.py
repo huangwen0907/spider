@@ -11,6 +11,11 @@ class DoubanSpider(scrapy.Spider):
     start_urls = [
         "https://movie.douban.com/top250"
     ]
+    custom_settings = {
+        'ITEM_PIPELINES': {
+        'douban.pipelines.DoubanPipeline': 300,
+        }
+    }
 
     def start_requests(self):
         for i in range(0,10):

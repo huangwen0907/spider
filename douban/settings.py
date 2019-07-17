@@ -71,9 +71,9 @@ ROBOTSTXT_OBEY = False
 #    'douban.pipelines.SomePipeline': 300,
 #}
 
-ITEM_PIPELINES = {
-    'douban.pipelines.DoubanPipeline': 300,
-}
+# ITEM_PIPELINES = {
+#    'douban.pipelines.DoubanPipeline': 300,
+# }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
